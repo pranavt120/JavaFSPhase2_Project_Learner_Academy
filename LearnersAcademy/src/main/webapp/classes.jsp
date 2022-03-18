@@ -1,5 +1,8 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,33 +12,35 @@
 <body>
 
 	<jsp:include page="navigation.jsp"></jsp:include>
-
+	
+	
+	<c:set var = "path" scope = "session" value = "${requestScope['jakarta.servlet.forward.context_path']}"/>
 	
 	<table>
 		<thead>
 			<td>SNo.</td>
-			<td>Section</td>
-			<td>Subject</td>
-			<td>Teacher</td>
-			<td>Timings</td>
-			<td>List of Students</td>
+			<td>class</td>
 		</thead>
+		
+		<% int serialNo = 1;
+			int size = 0;
+			int i = 0;
+			List<beans.Class> classList = new ArrayList<>();
+			classList = (ArrayList<beans.Class>)request.getAttribute("classList");
+			size = classList.size();
+			
+			while(size>0){
+		%>
 		<tr>
-			<td>1</td>
-			<td>A</td>
-			<td>Maths</td>
-			<td>Pranav</td>
-			<td>7:30</td>
-			<td><a href="">List</a></td>
+			<td><%= serialNo %></td>
+			<td><a href="${path}/classesAction?name=<%=classList.get(i).getName() %>"><%= classList.get(i).getName() %></td>
 		</tr>
-		<tr>
-			<td>1</td>
-			<td>A</td>
-			<td>Maths</td>
-			<td>Pranav</td>
-			<td>7:30</td>
-			<td><a href="">List</a></td>
-		</tr>
+		<%
+			serialNo++;
+			i++;
+			size--;
+			}
+		%>
 	</table>
 </body>
 </html>

@@ -5,39 +5,39 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import beans.Subject;
-import dao.SubjectDAO;
+import beans.Student;
+import dao.StudentDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/subjects")
-public class SubjectServlet extends HttpServlet {
+@WebServlet("/students")
+public class StudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
-    public SubjectServlet() {
+    public StudentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Subject> subjectList = new ArrayList<Subject>();
-		subjectList = new SubjectDAO().getSubjectList();
-		
-		if(subjectList != null) {
-			request.setAttribute("subjectList", subjectList);
-			request.getRequestDispatcher("subjects.jsp").forward(request, response);
+		List<Student> studentList = new ArrayList<Student>();
+		studentList = new StudentDAO().getStudentList();
+		if(studentList != null) {
+			request.setAttribute("list", studentList);
+			request.getRequestDispatcher("studentList.jsp").forward(request, response);
 		}else {
-			request.setAttribute("null", "null");
-			request.getRequestDispatcher("subjects.jsp").forward(request, response);
+			request.setAttribute("msg", "null");
+			request.getRequestDispatcher("studentList.jsp").forward(request, response);
 		}
 		
 		
-
+		
 	}
 
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

@@ -2,41 +2,38 @@ package controller;
 
 import jakarta.servlet.http.HttpServlet;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-import beans.Subject;
-import dao.SubjectDAO;
+import dao.AdminDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/subjects")
-public class SubjectServlet extends HttpServlet {
+@WebServlet("/loginAction")
+public class LoginActionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
-    public SubjectServlet() {
+    public LoginActionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Subject> subjectList = new ArrayList<Subject>();
-		subjectList = new SubjectDAO().getSubjectList();
-		
-		if(subjectList != null) {
-			request.setAttribute("subjectList", subjectList);
-			request.getRequestDispatcher("subjects.jsp").forward(request, response);
-		}else {
-			request.setAttribute("null", "null");
-			request.getRequestDispatcher("subjects.jsp").forward(request, response);
-		}
-		
-		
-
+		 String email = request.getParameter("email");
+		 String password = request.getParameter("password");
+		 AdminDAO admin = new AdminDAO();
+		 boolean isValidate = admin.validateAdmin(email, password);
+		 if(isValidate) {
+			 String msg = "valid";
+			 request.setAttribute("msg", msg);
+			 request.getRequestDispatcher("adminHome.jsp").forward(request, response);
+		 }else {
+			 String msg = "invalid";
+			 request.setAttribute("msg", msg);
+			 request.getRequestDispatcher("/login").forward(request, response);
+		 }
 	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

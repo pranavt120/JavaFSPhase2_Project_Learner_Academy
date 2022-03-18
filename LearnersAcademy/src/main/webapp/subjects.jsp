@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="beans.Subject"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -13,16 +16,33 @@
 	<table>
 	<thead>
 		<td>SNo.</td>
-		<td>Id</td>
 		<td>Subject Name</td>
 		<td>Teacher Allocated</td>
 	</thead>
+	<% int serialNo = 1;
+		int size=0;
+		int i = 0;
+		
+		List<Subject> subjectList = new ArrayList<>();
+		subjectList = (ArrayList<Subject>)request.getAttribute("subjectList");
+		size = subjectList.size();
+		while(size>0){
+			if(!("null".equals(request.getAttribute("null")))){
+	%>
+	
 	<tr>
-		<td>1.</td>
-		<td>SUB_1</td>
-		<td>Maths</td>
-		<td>Pranav</td>
+		<td><%= serialNo %></td>
+		<td><%= subjectList.get(i).getName() %></td>
+		<td><%= subjectList.get(i).getTeacher() %></td>
 	</tr>
+	<%
+		serialNo++;
+		i++;
+		size--;
+			}
+		}
+	%>
+	
 	</table>
 
 </body>

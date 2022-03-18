@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="beans.Teacher"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -14,21 +17,32 @@
 	<table>
 		<thead>
 			<td>SNo.</td>
-			<td>Teacher_Id</td>
 			<td>First Name</td>
 			<td>Last Name</td>
-			<td>Age</td>
 			<td>Subjects</td>
 			
 		</thead>
+		<%
+			int serialNo = 1;
+			int size = 0;
+			int i = 0;
+			List<Teacher> teacherList = new ArrayList<>();
+			teacherList = (ArrayList<Teacher>)request.getAttribute("teacherList");
+			size = teacherList.size();
+			while(size>0){
+		%>
 		<tr>
-			<td>1.</td>
-			<td>SLC_1</td>
-			<td>Pranav</td>
-			<td>Takkar</td>
-			<td>28</td>
-			<td>Maths</td>
+			<td><%= serialNo %></td>
+			<td><%= teacherList.get(i).getFirstName() %></td>
+			<td><%= teacherList.get(i).getLastName() %></td>
+			<td><%= teacherList.get(i).getSubjects() %></td>
 		</tr>
+		<%
+			serialNo++;
+			i++;
+			size--;
+			}
+		%>
 	</table>
 </body>
 </html>
