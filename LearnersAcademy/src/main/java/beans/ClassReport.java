@@ -2,18 +2,43 @@ package beans;
 
 public class ClassReport {
 
-	private String name;
+	private String className;
 	private String subject;
 	private String teacher;
+	private int subjectId, teacherId,classId;
 	
 	public ClassReport() {}
 
 	public String getName() {
-		return name;
+		return className;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.className = name;
+	}
+
+	public int getSubjectId() {
+		return subjectId;
+	}
+
+	public void setSubjectId(int subjectId) {
+		this.subjectId = subjectId;
+	}
+
+	public int getTeacherId() {
+		return teacherId;
+	}
+
+	public void setTeacherId(int teacherId) {
+		this.teacherId = teacherId;
+	}
+
+	public int getClassId() {
+		return classId;
+	}
+
+	public void setClassId(int classId) {
+		this.classId = classId;
 	}
 
 	public String getSubject() {

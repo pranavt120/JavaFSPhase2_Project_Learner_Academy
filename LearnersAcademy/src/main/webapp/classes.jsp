@@ -16,10 +16,41 @@
 	
 	<c:set var = "path" scope = "session" value = "${requestScope['jakarta.servlet.forward.context_path']}"/>
 	
+	<%	
+		String msg = (String)request.getAttribute("msg");
+		if("added".equals(msg)){
+	%>
+	<p> Class Added Successfully</p>
+	<%
+		}
+		else if("error".equals(msg)){
+	%>
+	<p>Something went wrong, could not add Class, Please try again.</p>
+	<%
+		}
+	%>
+	<%
+		String msgDel = (String)request.getAttribute("msg");
+		if("deleted".equals(msgDel)){
+	%>
+		<p>Class deleted successfully!!</p>
+	<%
+		}else if("error".equals(msgDel)){
+	%>
+		<p>Could not delete Class. Please try again</p>
+	<%
+		}
+	%>
+	
+	<form method="post" action="${path}/addClass">
+		<button type="submit">Add Class</button>
+	</form>
+	
 	<table>
 		<thead>
 			<td>SNo.</td>
 			<td>class</td>
+			<td>Delete Class</td>
 		</thead>
 		
 		<% int serialNo = 1;
@@ -33,7 +64,8 @@
 		%>
 		<tr>
 			<td><%= serialNo %></td>
-			<td><a href="${path}/classesAction?name=<%=classList.get(i).getName() %>"><%= classList.get(i).getName() %></td>
+			<td><a href="${path}/classesAction?name=<%=classList.get(i).getName()%>"><%= classList.get(i).getName() %></td>
+			<td><a href="${path}/deleteClass?id=<%=classList.get(i).getId()%>" >Delete</a></td>
 		</tr>
 		<%
 			serialNo++;

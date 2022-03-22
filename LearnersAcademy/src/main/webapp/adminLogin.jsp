@@ -11,8 +11,10 @@
   </head>
   <body>
   <h1>Admin Login</h1>
+
  
-  <% String msg = (String)request.getAttribute("msg");
+  <% 
+  	String msg = (String)request.getAttribute("msg");
   	if("invalid".equals(msg)){	
   %>
   	<h3>Invalid Credentials! Please try again</h3>

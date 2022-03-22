@@ -11,7 +11,7 @@ import beans.ClassReport;
 
 public class ClassDetailsDAO {
 	
-	public final String QUERY = "select class,subject_name, teacher_name from Class_Report where class= ? group by subject_name,teacher_name";
+	public final String QUERY = "select teacher_id, teacherName, class_id, class, subject_id, subject_name from class_report_2 where class = ? group by teacherName, subject_name ";
 	
 	private List<ClassReport> classReportList = new ArrayList<ClassReport>();
 	private ClassReport classReport;
@@ -27,9 +27,12 @@ public class ClassDetailsDAO {
 			ResultSet set = statement.executeQuery();
 			while(set.next()) {
 				classReport = new ClassReport();
-				classReport.setName(set.getString(1));
-				classReport.setTeacher(set.getString(3));
-				classReport.setSubject(set.getString(2));
+				classReport.setTeacherId(set.getInt(1));
+				classReport.setTeacher(set.getString(2));
+				classReport.setClassId(set.getInt(3));
+				classReport.setName(set.getString(4));
+				classReport.setSubjectId(set.getInt(5));
+				classReport.setSubject(set.getString(6));
 				
 				classReportList.add(classReport);
 			}

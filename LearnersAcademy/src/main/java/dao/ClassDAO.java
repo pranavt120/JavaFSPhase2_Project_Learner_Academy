@@ -11,7 +11,7 @@ import beans.Class;
 
 public class ClassDAO {
 	
-	private final String QUERY = "Select Name from classes";
+	private final String QUERY = "Select * from classes";
 	private Class cls;
 	private List<Class> classList = new ArrayList<Class>();
 	
@@ -25,7 +25,8 @@ public class ClassDAO {
 			ResultSet set = statement.executeQuery();
 			while(set.next()) {
 				cls = new Class();
-				cls.setName(set.getString(1));
+				cls.setName(set.getString(2));
+				cls.setId(set.getInt(1));
 				
 				classList.add(cls);
 			}

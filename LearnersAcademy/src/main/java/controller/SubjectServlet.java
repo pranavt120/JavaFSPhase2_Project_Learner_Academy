@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import beans.Subject;
+import beans.SubjectTeacher;
 import dao.SubjectDAO;
+import dao.SubjectTeacherDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;

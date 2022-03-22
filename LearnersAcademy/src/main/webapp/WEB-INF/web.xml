@@ -1,18 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>LearnersAcademy</display-name>
+  <filter>
+  	<description>
+  	</description>
+  	<display-name>AuthenticationFilter</display-name>
+  	<filter-name>AuthenticationFilter</filter-name>
+  	<filter-class>filters.AuthenticationFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>AuthenticationFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+ <filter>
+  	<description>
+  	</description>
+  	<display-name>HideJSPFilter</display-name>
+  	<filter-name>HideJSPFilter</filter-name>
+  	<filter-class>filters.HideJSPFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>HideJSPFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
   <servlet>
   	<description>
   	</description>
-  	<display-name>StudentsEnrolledServlet</display-name>
-  	<servlet-name>StudentsEnrolledServlet</servlet-name>
-  	<servlet-class>controller.StudentsEnrolledServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>StudentsEnrolledServlet</servlet-name>
-  	<url-pattern>/studentsEnrolled</url-pattern>
-  </servlet-mapping>
+  	<display-name>AdminHome</display-name>
+  	<servlet-name>AdminHome</servlet-name>
+  	<servlet-class>controller.AdminHome</servlet-class>
+ </servlet>
+
+
+ 
+
   
+  <servlet-mapping>
+  	<servlet-name>AdminHome</servlet-name>
+  	<url-pattern>/adminHome</url-pattern>
+  </servlet-mapping>
+
+ 
+ 
+ 
+ 
+
+
+
+
+ 
+
+
+
+ 
+  
+ 
+ 	<error-page>
+		<error-code>500</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error404.jsp</location>
+	</error-page> 
 
 
 </web-app>

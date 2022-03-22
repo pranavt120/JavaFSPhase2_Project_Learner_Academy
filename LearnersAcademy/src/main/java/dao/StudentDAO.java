@@ -10,33 +10,30 @@ import java.util.List;
 import beans.Student;
 
 public class StudentDAO {
-	
-	final String SELECT = "select student.`First Name`, student.`Last Name`, group_concat(subjects.`Name`) as Subjects  from student inner join studentsubjectrelation as relation on student.rollNo = relation.Student inner join subjects on subjects.id = relation.Subject group by student.`First Name`";
+
+	private final String QUERY = "select * from student";
 	private Student student;
-	private List<Student> studentList = new ArrayList<>();
+	private List<Student> studentList = new ArrayList<Student>();
+	
 	
 	public List<Student> getStudentList(){
 		try {
 			Connection connection = DBConnectionProvider.getConnection();
-			PreparedStatement statement = connection.prepareStatement(SELECT);
+			PreparedStatement statement = connection.prepareStatement(QUERY);
 			
 			ResultSet set = statement.executeQuery();
 			while(set.next()) {
 				student = new Student();
-				student.setFirstName(set.getString(1));
-				student.setLastName(set.getString(2));
-				student.setSubjects(set.getString(3));
-				studentList.add(student);
+				student.setRollNo(set.getInt(1));
+				student.setFirstName(set.getString(2));
+				student.setLastName(set.getString(3));
 				
+				studentList.add(student);
 			}
-			return studentList;
 		}catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		return null;
+		return studentList;
 	}
-	
-	
-
 }

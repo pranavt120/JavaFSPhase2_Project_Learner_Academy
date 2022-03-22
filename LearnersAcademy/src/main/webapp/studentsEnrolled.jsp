@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="beans.Student"%>
+<%@page import="beans.StudentSubject"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -22,14 +22,14 @@
 		</thead>
 		
 		<%
-			int serialNo=1;
-			int size=0;
-			int i=0;
-			List<Student> studentList = new ArrayList<>();
-			studentList = (ArrayList<Student>)request.getAttribute("studentList");
-			size = studentList.size();
-			while(size>0){
-		%>
+				int serialNo=1;
+					int size=0;
+					int i=0;
+					List<StudentSubject> studentList = new ArrayList<>();
+					studentList = (ArrayList<StudentSubject>)request.getAttribute("studentList");
+					size = studentList.size();
+					while(size>0){
+				%>
 		<tr>
 			<td> <%= serialNo %></td>
 			<td><%= studentList.get(i).getFirstName() %></td>

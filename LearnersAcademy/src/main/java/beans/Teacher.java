@@ -4,14 +4,14 @@ public class Teacher {
 	
 	private String firstName;
 	private String lastName;
-	private String subjects;
-	
-	public String getSubjects() {
-		return subjects;
+	private int id;
+
+	public int getId() {
+		return id;
 	}
 
-	public void setSubjects(String subjects) {
-		this.subjects = subjects;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public Teacher() {}

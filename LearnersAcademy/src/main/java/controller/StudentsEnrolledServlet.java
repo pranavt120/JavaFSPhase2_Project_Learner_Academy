@@ -5,13 +5,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import beans.Student;
+import beans.StudentSubject;
 import dao.SubjectEnrnolledDAO;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-
+@WebServlet("/studentsEnrolled")
 public class StudentsEnrolledServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -22,9 +23,9 @@ public class StudentsEnrolledServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String subject = request.getParameter("subject");
-		List<Student> studentList = new ArrayList<Student>();
-		studentList = new SubjectEnrnolledDAO().getStudentEnrolledList(subject);
+		int classId = Integer.parseInt(request.getParameter("class"));
+		List<StudentSubject> studentList = new ArrayList<StudentSubject>();
+		studentList = new SubjectEnrnolledDAO().getStudentEnrolledList(classId);
 		request.setAttribute("studentList", studentList);
 		request.getRequestDispatcher("studentsEnrolled.jsp").forward(request, response);
 	}

@@ -30,7 +30,6 @@
 			<td>SNO.</td>
 			<td>Teachers</td>
 			<td>Subjects</td>
-			<td>Students Enrolled</td>
 		</thead>
 		
 		<%
@@ -40,7 +39,6 @@
 			<td><%=serialNo %></td>
 			<td><%= classReportList.get(i).getTeacher() %></td>
 			<td><%= classReportList.get(i).getSubject() %></td>
-			<td><a href="${path}/studentsEnrolled?&subject=<%= classReportList.get(i).getSubject() %>">Student List </a></td>
 		</tr>
 		
 		<%
@@ -50,6 +48,11 @@
 			}
 		%>
 	</table>
+	<br>
+	
+	<form method="post" action="${path}/studentsEnrolled?class=<%= classReportList.get(0).getClassId()%>">
+		<button type="submit">Get Student List</button>
+	</form>
 
 </body>
 </html>

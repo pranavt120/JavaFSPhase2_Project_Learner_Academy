@@ -3,17 +3,17 @@ package beans;
 public class Subject {
 
 	private String name;
-	private String teacher;
+	private int id;
 	
-	public String getTeacher() {
-		return teacher;
+	public int getId() {
+		return id;
 	}
 
-	public void setTeacher(String teacher) {
-		this.teacher = teacher;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public Subject() {}
+	public Subject () {}
 
 	public String getName() {
 		return name;
@@ -27,6 +27,5 @@ public class Subject {
 	public String toString() {
 		return "Subject [name=" + name + "]";
 	}
-	
 	
 }

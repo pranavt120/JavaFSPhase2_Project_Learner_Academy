@@ -8,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/loginAction")
 public class LoginActionServlet extends HttpServlet {
@@ -19,18 +20,22 @@ public class LoginActionServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 String email = request.getParameter("email");
+		
+		HttpSession session = request.getSession();
+		
+		String email = request.getParameter("email");
 		 String password = request.getParameter("password");
 		 AdminDAO admin = new AdminDAO();
 		 boolean isValidate = admin.validateAdmin(email, password);
 		 if(isValidate) {
+			 session.setAttribute("username", email);
 			 String msg = "valid";
 			 request.setAttribute("msg", msg);
-			 request.getRequestDispatcher("adminHome.jsp").forward(request, response);
+			 request.getRequestDispatcher("/adminHome").forward(request, response);
 		 }else {
 			 String msg = "invalid";
 			 request.setAttribute("msg", msg);
-			 request.getRequestDispatcher("/login").forward(request, response);
+			 request.getRequestDispatcher("/").forward(request, response);
 		 }
 	}
 
