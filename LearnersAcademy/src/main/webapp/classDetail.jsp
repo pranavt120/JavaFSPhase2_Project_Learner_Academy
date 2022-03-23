@@ -8,7 +8,60 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Class Details</title>
+<style type="text/css">
+
+body{
+	padding:0;
+	margin-top:0;
+}
+
+	div{
+		position:relative;
+		left:18%;
+		width:80%;
+	}
+	
+	h1{
+		text-align: center;
+	}
+	
+	div>table{
+		
+		border:1px solid grey;
+		width:100%;
+		
+	}
+	
+	.col{
+		text-align: center;
+		padding: 10 20px;
+		background-color: rgb(238, 238, 238 )
+		
+	}
+	
+	.head{
+		background-color: rgb(0,0,0);
+		color:white;
+	}
+	
+	.button{
+		padding: 2px 50px;
+		margin: 5px;
+	}
+	
+	.button:hover{
+		background-color: black;
+		color:white;
+		cursor: pointer;
+	}
+	
+	.link{
+		text-decoration: none;
+		
+	}
+
+</style>
 </head>
 <body>
 
@@ -23,22 +76,23 @@
 	size = classReportList.size(); 
 	%>
 	
-	<h2><%= classReportList.get(i).getName()%></h2>
+	<div>
+		<h1><%= classReportList.get(i).getName()%></h1>
 	
 	<table>
 		<thead>
-			<td>SNO.</td>
-			<td>Teachers</td>
-			<td>Subjects</td>
+			<td class="col head">SNO.</td>
+			<td class="col head">Teachers</td>
+			<td class="col head">Subjects</td>
 		</thead>
 		
 		<%
 			while(size>0){
 		%>
 		<tr>
-			<td><%=serialNo %></td>
-			<td><%= classReportList.get(i).getTeacher() %></td>
-			<td><%= classReportList.get(i).getSubject() %></td>
+			<td class="col"><%=serialNo %></td>
+			<td class="col"><%= classReportList.get(i).getTeacher() %></td>
+			<td class="col"><%= classReportList.get(i).getSubject() %></td>
 		</tr>
 		
 		<%
@@ -51,8 +105,12 @@
 	<br>
 	
 	<form method="post" action="${path}/studentsEnrolled?class=<%= classReportList.get(0).getClassId()%>">
-		<button type="submit">Get Student List</button>
+		<button class="button" type="submit">Get Student List</button>
 	</form>
+	
+	</div>
+	
+	
 
 </body>
 </html>

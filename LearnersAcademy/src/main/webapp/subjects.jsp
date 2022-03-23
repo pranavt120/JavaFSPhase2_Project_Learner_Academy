@@ -10,7 +10,60 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Subjects</title>
+<style type="text/css">
+
+	body{
+	padding:0;
+	margin-top:0;
+}
+
+	div{
+		position:relative;
+		left:18%;
+		width:80%;
+	}
+	
+	h1{
+		text-align: center;
+	}
+	
+	div>table{
+		
+		border:1px solid grey;
+		width:100%;
+		
+	}
+	
+	.col{
+		text-align: center;
+		padding: 10 20px;
+		background-color: rgb(238, 238, 238 )
+		
+	}
+	
+	.head{
+		background-color: rgb(0,0,0);
+		color:white;
+	}
+	
+	.button{
+		padding: 2px 50px;
+		margin: 5px;
+	}
+	
+	.button:hover{
+		background-color: black;
+		color:white;
+		cursor: pointer;
+	}
+	
+	.link{
+		text-decoration: none;
+		
+	}
+	
+</style>
 </head>
 <body>
 <jsp:include page="navigation.jsp"></jsp:include>
@@ -30,17 +83,19 @@
 		}
 	%>	
 
-
-	<form method="get" action="${path}/addSubject">
-    	<button type="submit">Add Subject</button>
+	
+	<div>
+		<h1>Subjects</h1>
+		<form method="get" action="${path}/addSubject">
+    	<button class="button" type="submit">Add Subject</button>
 	</form>
 
 	
 	<table>
 	<thead>
-		<td>SNo.</td>
-		<td>Subject Name</td>
-		<td>Delete Subject</td>
+		<td class="col head">SNo.</td>
+		<td class="col head">Subject Name</td>
+		<td class="col head">Delete Subject</td>
 	</thead>
 	<%
 	int serialNo = 1;
@@ -55,9 +110,9 @@
 	%>
 	
 	<tr>
-		<td><%= serialNo %></td>
-		<td><%= subjectList.get(i).getName() %></td>
-		<td><a href="${path}/deleteSubject?id=<%=subjectList.get(i).getId()%>">Delete</a></td>
+		<td class="col"><%= serialNo %></td>
+		<td class="col"><%= subjectList.get(i).getName() %></td>
+		<td class="col"><a href="${path}/deleteSubject?id=<%=subjectList.get(i).getId()%>">Delete</a></td>
 	</tr>
 	<%
 		serialNo++;
@@ -68,6 +123,10 @@
 	%>
 	
 	</table>
+	
+	</div>
+	
+	
 
 </body>
 </html>

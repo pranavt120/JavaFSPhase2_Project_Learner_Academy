@@ -7,6 +7,37 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Teacher</title>
+<style type="text/css">
+	body{
+	padding:0;
+	margin-top:0;
+}
+
+	div{
+		position:relative;
+		left:30%;
+		width:60%;
+		border: 1px solid black;
+		margin-top: 15%;
+	}
+	
+	h1{
+		text-align: center;
+	}
+	
+	.input{
+		display:block;
+		width:70%;
+		margin: 3px auto;
+		padding: 3px 10px;
+	}
+	
+	.button{
+		width:30%;
+		margin: 5px 36%;
+	}
+
+</style>
 </head>
 <body>
 
@@ -28,12 +59,15 @@
 	<%
 	}
 	%>
-	
-	<form method="post" action="${path}/addTeacherAction">
-		<input type="text" name="firstName" placeholder="Enter First Name" required/>
-		<input type="text" name="lastName" placeholder="Enter Last Name" required/>
-		<button  type="submit">Submit</button>
+	<div>
+		<h1>Add Teacher</h1>
+		<form method="post" action="${path}/addTeacherAction">
+		<input class="input" type="text" name="firstName" placeholder="Enter First Name" required/>
+		<input class="input type="text" name="lastName" placeholder="Enter Last Name" required/>
+		<button class="button type="submit">Submit</button>
 	</form>
+	</div>
+	
 
 </body>
 </html>

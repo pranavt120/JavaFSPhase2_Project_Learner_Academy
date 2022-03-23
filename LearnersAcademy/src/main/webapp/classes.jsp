@@ -7,7 +7,58 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Class Listt</title>
+<style type="text/css">
+	body{
+	padding:0;
+	margin-top:0;
+}
+
+	div{
+		position:relative;
+		left:18%;
+		width:80%;
+	}
+	
+	h1,h3{
+		text-align: center;
+	}
+	
+	div>table{
+		
+		border:1px solid grey;
+		width:100%;
+		
+	}
+	
+	.col{
+		text-align: center;
+		padding: 10 20px;
+		background-color: rgb(238, 238, 238 )
+		
+	}
+	
+	.head{
+		background-color: rgb(0,0,0);
+		color:white;
+	}
+	
+	.button{
+		padding: 2px 50px;
+		margin: 5px;
+	}
+	
+	.button:hover{
+		background-color: black;
+		color:white;
+		cursor: pointer;
+	}
+	
+	.link{
+		text-decoration: none;
+		
+	}
+</style>
 </head>
 <body>
 
@@ -20,12 +71,12 @@
 		String msg = (String)request.getAttribute("msg");
 		if("added".equals(msg)){
 	%>
-	<p> Class Added Successfully</p>
+	<h3> Class Added Successfully</h3>
 	<%
 		}
 		else if("error".equals(msg)){
 	%>
-	<p>Something went wrong, could not add Class, Please try again.</p>
+	<h3>Something went wrong, could not add Class, Please try again.</h3>
 	<%
 		}
 	%>
@@ -33,24 +84,26 @@
 		String msgDel = (String)request.getAttribute("msg");
 		if("deleted".equals(msgDel)){
 	%>
-		<p>Class deleted successfully!!</p>
+		<h3>Class deleted successfully!!</h3>
 	<%
 		}else if("error".equals(msgDel)){
 	%>
-		<p>Could not delete Class. Please try again</p>
+		<h3>Could not delete Class. Please try again</h3>
 	<%
 		}
 	%>
 	
-	<form method="post" action="${path}/addClass">
-		<button type="submit">Add Class</button>
+	<div>
+		<h1>Class List</h1>
+		<form method="post" action="${path}/addClass">
+		<button class="button type="submit">Add Class</button>
 	</form>
 	
 	<table>
 		<thead>
-			<td>SNo.</td>
-			<td>class</td>
-			<td>Delete Class</td>
+			<td class="col head">SNo.</td>
+			<td class="col head">class</td>
+			<td class="col head">Delete Class</td>
 		</thead>
 		
 		<% int serialNo = 1;
@@ -63,9 +116,9 @@
 			while(size>0){
 		%>
 		<tr>
-			<td><%= serialNo %></td>
-			<td><a href="${path}/classesAction?name=<%=classList.get(i).getName()%>"><%= classList.get(i).getName() %></td>
-			<td><a href="${path}/deleteClass?id=<%=classList.get(i).getId()%>" >Delete</a></td>
+			<td class="col"><%= serialNo %></td>
+			<td class="col"><a href="${path}/classesAction?name=<%=classList.get(i).getName()%>"><%= classList.get(i).getName() %></td>
+			<td class="col"><a href="${path}/deleteClass?id=<%=classList.get(i).getId()%>" >Delete</a></td>
 		</tr>
 		<%
 			serialNo++;
@@ -74,5 +127,9 @@
 			}
 		%>
 	</table>
+	
+	</div>
+	
+	
 </body>
 </html>

@@ -6,7 +6,38 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Add Subject</title>
+<title>Add Student</title>
+<style type="text/css">
+	body{
+	padding:0;
+	margin-top:0;
+}
+
+	div{
+		position:relative;
+		left:30%;
+		width:60%;
+		border: 1px solid black;
+		margin-top: 15%;
+	}
+	
+	h1{
+		text-align: center;
+	}
+	
+	.input{
+		display:block;
+		width:70%;
+		margin: 3px auto;
+		padding: 3px 10px;
+	}
+	
+	.button{
+		width:30%;
+		margin: 5px 36%;
+	}
+
+</style>
 </head>
 <body>
 <jsp:include page="navigation.jsp"></jsp:include>
@@ -25,13 +56,16 @@
 	<%
 		}
 	%>
-
-	<form method="post" action="${path}/addStudentAction">
-		<input type="text" name="firstName" placeholder="Enter First Name" required />
-		<input type="text" name="lastName" placeholder="Enter Last Name" required />
+	<div>
+		<h1>Add Student</h1>
+		<form method="post" action="${path}/addStudentAction">
+		<input class="input" type="text" name="firstName" placeholder="Enter First Name" required />
+		<input class="input" type="text" name="lastName" placeholder="Enter Last Name" required />
 		
-		<button type="submit">Submit</button>
+		<button class="button" type="submit">Submit</button>
 	</form>
+	</div>
+	
 
 </body>
 </html>
